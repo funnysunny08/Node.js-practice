@@ -40,12 +40,20 @@ app.use('/', indexRouter);
 app.use('/user', userRouter);
 
 app.use((req, res, next) => {
-    res.status(404).send('Not Found');
+    // 6.5.3 내용
+    const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`)
+    error.status = 404;
+    next(error);
 });
 
 app.use((err, req, res, next) => {
-    console.error(err);
-    res.status(500).send(err.message);
+    // console.error(err);
+    // res.status(500).send(err.message);
+    // 6.5.3 내용
+    res.locals.message = err.message;
+    res.locals.error = process.env.NODE_ENV !== 'productiion' ? err : {};
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 app.listen(app.get('port'), () => {
