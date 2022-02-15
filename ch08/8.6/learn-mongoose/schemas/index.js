@@ -4,7 +4,7 @@ const connect = () => {
     if (process.env.NODE_ENV !== 'production') {
         mongoose.set('debug', true);
     }
-    mongoose.connect('mongodb://sunny:sh0828@localhost:27017/admin', {
+    mongoose.connect('mongodb://localhost:27017/admin', {
         dbName: 'nodejs',
         useNewUrlParser: true,
         useCreateIndex: true,
@@ -16,6 +16,7 @@ const connect = () => {
         }
     });
 };
+
 mongoose.connection.on('error', (error) => {
     console.error('몽고디비 연결 에러', error);
 });
