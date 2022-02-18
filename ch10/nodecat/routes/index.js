@@ -10,7 +10,7 @@ router.get('/test', async (req, res, next) => { // 토큰 테스트 라우터
                 clientSecret: process.env.CLIENT_SECRET,
             });
             if (tokenResult.data && tokenResult.data.code === 200) { // 토큰 발급 성공
-                req.session.jwt = tokenResult.data.token; // 세선에 토큰 저장
+                req.session.jwt = tokenResult.data.token; // 세션에 토큰 저장
             } else { // 토큰 발급 실패
                 return res.json(tokenResult.data); // 발급 실패 사유 응답
             }

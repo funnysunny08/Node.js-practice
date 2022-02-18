@@ -25,10 +25,10 @@ router.post('/token', async (req, res) => {
         const token = jwt.sign({
             id: domain.User.id,
             nick: domain.User.nick,
-        }, process.env.JWE_SECRET, {
+        }, process.env.JWT_SECRET, {
             expiresIn: '1m', // 1분
             issuer: 'nodebird',
-        }); // 토큰 발급
+        });
         return res.json({
             code: 200,
             message: '토큰이 발급되었습니다',
