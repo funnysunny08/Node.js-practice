@@ -28,7 +28,7 @@ router.post('/token', async (req, res) => {
         }, process.env.JWE_SECRET, {
             expiresIn: '1m', // 1분
             issuer: 'nodebird',
-        });
+        }); // 토큰 발급
         return res.json({
             code: 200,
             message: '토큰이 발급되었습니다',
