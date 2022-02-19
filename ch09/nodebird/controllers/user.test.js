@@ -8,7 +8,7 @@ describe('addFollowing', () => {
         params: { id: 2 },
     };
     const res = {
-        status: jest.fn(() => res),
+        //status: jest.fn(() => res),
         send: jest.fn(),
     };
     const next = jest.fn();
